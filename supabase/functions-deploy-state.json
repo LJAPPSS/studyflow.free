@@ -1,0 +1,13 @@
+{
+  "projectId": "72575718",
+  "functions": {
+    "ai-assistant": {
+      "hasChanged": false,
+      "hash": "c7ce2d045f7fce549fba3f843363adcedda3eddb9ff0b2c02255e06b17607c01"
+    },
+    "delete-account": {
+      "hasChanged": false,
+      "hash": "0edeb7468b0035e43bf891c7ea90ceb81b8dcded0c1df556fe99a1f87d7b00fe"
+    }
+  }
+}

@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --dp-color-ground: #fffdf5;
+  --dp-color-panel: #ffffff;
+  --dp-color-ink: #253044;
+  --dp-color-outline: #252b3a;
+  --dp-color-accent: #6434df;
+  --dp-color-secondary: #ff78c5;
+  --dp-color-warm: #ffd05b;
+  --dp-color-fresh: #9bf1cd;
+  --dp-color-field-soft: #e9fff5;
+  --dp-color-selection: #f1ebff;
+  --dp-color-rule-muted: #b8b6c5;
+  --dp-shadow-color: #252b3a;
+  --dp-accent-50: 244 239 255;
+  --dp-accent-100: 233 224 255;
+  --dp-accent-200: 211 193 255;
+  --dp-accent-300: 178 148 255;
+  --dp-accent-400: 143 98 245;
+  --dp-accent-500: 118 70 234;
+  --dp-accent-600: 100 52 223;
+  --dp-accent-700: 84 38 192;
+  --dp-accent-800: 69 32 160;
+  --dp-accent-900: 58 28 128;
+  --dp-accent-950: 36 16 85;
+  --dp-font-display: 'Host Grotesk', system-ui, sans-serif;
+  --dp-font-reading: 'Instrument Sans', system-ui, sans-serif;
+  --dp-radius-playful: 17px;
+  --dp-outline-width: 3px;
+  --dp-motion-interaction: 180ms;
+}
+
+.dark {
+  --dp-color-ground: #141826;
+  --dp-color-panel: #1c2233;
+  --dp-color-ink: #eef0f7;
+  --dp-color-outline: #566089;
+  --dp-color-selection: #2a2448;
+  --dp-color-field-soft: #17302b;
+  --dp-color-rule-muted: #3b4262;
+  --dp-shadow-color: #07080d;
+}
+
+[data-style='retro'] {
+  --dp-color-ground: #008080;
+  --dp-color-panel: #d4d4d4;
+  --dp-color-ink: #000000;
+  --dp-color-outline: #000000;
+  --dp-color-secondary: #ff00b8;
+  --dp-color-warm: #ffff00;
+  --dp-color-fresh: #008080;
+  --dp-color-field-soft: #ffffff;
+  --dp-color-selection: #ffff99;
+  --dp-color-rule-muted: #808080;
+  --dp-shadow-color: #000000;
+  --dp-accent-50: 242 235 255;
+  --dp-accent-100: 224 208 255;
+  --dp-accent-200: 194 163 255;
+  --dp-accent-300: 163 117 255;
+  --dp-accent-400: 138 82 255;
+  --dp-accent-500: 122 51 255;
+  --dp-accent-600: 102 0 255;
+  --dp-accent-700: 83 0 204;
+  --dp-accent-800: 66 0 163;
+  --dp-accent-900: 51 0 122;
+  --dp-accent-950: 31 0 77;
+  --dp-font-display: 'Host Grotesk', system-ui, sans-serif;
+  --dp-font-reading: 'IBM Plex Sans', system-ui, sans-serif;
+  --dp-radius-playful: 0px;
+  --dp-outline-width: 2px;
+}
+
+.dark[data-style='retro'] {
+  --dp-color-ground: #004040;
+  --dp-color-panel: #3c3c3c;
+  --dp-color-ink: #ffffff;
+  --dp-color-outline: #000000;
+  --dp-color-field-soft: #2a2a2a;
+  --dp-color-selection: #5c4a00;
+  --dp-color-rule-muted: #606060;
+  --dp-shadow-color: #000000;
+}
+
+[data-style='retro'] body {
+  background-image: none;
+}
+
+[data-style='retro'] h1 {
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+[data-style='retro'] .card {
+  border-width: 2px;
+  box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #808080, 4px 4px 0 #000000;
+}
+
+[data-style='retro'] .card-interactive:hover {
+  box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #808080, 6px 6px 0 #000000;
+}
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply min-h-screen bg-ground text-ink;
+    font-family: var(--dp-font-reading);
+    line-height: 1.5;
+    background-image: radial-gradient(rgb(37 48 68 / 0.12) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .dark body {
+    background-image: radial-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--dp-font-display);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  :focus-visible {
+    @apply outline-none;
+    outline: var(--dp-outline-width) solid var(--dp-color-accent);
+    outline-offset: 3px;
+  }
+
+  .dark :focus-visible {
+    outline-color: #b294ff;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-playful border-[3px] border-outline bg-panel p-6 text-ink shadow-hard;
+  }
+
+  .card-interactive {
+    @apply transition-[transform,box-shadow] duration-[180ms] ease-out hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-lg active:translate-x-[2px] active:translate-y-[2px] active:shadow-hard-sm;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
